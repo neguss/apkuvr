@@ -931,7 +931,7 @@ class MainActivity : AppCompatActivity() {
             db.addRowPers("Чурилов Э.В.", "PERSON")
         }
         //Заполняем объекты
-        var tmp=db.getObject()//ew
+        var tmp=db.getObject()//eww
         if (tmp!=null) {
             while (tmp.moveToNext()) {
                 arr+=tmp.getString(tmp.getColumnIndex("OBJ_NAME"))
