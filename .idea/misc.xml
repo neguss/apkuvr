@@ -6,10 +6,12 @@
         <entry key="../../../../layout/custom_preview.xml" value="0.2502997601918465" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_question.xml" value="0.23385416666666667" />
+        <entry key="app/src/main/res/layout/activity_result.xml" value="0.2821557971014493" />
         <entry key="app/src/main/res/layout/content_question.xml" value="0.23385416666666667" />
         <entry key="app/src/main/res/layout/multiline_spinner_dropdown_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/multiline_spinner_item.xml" value="0.1859375" />
         <entry key="app/src/main/res/layout/question.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/textfield.xml" value="0.2328125" />
       </map>
     </option>
   </component>

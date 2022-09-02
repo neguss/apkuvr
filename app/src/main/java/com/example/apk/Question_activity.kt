@@ -1,5 +1,6 @@
 package com.example.apk
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -19,7 +20,8 @@ class Question_activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.question)
-
+        val resultintent= Intent(this,Result::class.java)
+        val complete_button=findViewById<Button>(R.id.complete)
         val no_button=findViewById<Button>(R.id.no_button)
         val yes_button=findViewById<Button>(R.id.yes_button)
         val back=findViewById<Button>(R.id.back_button)
@@ -146,7 +148,11 @@ class Question_activity : AppCompatActivity() {
         counter.setOnClickListener {
             seek.visibility = View.VISIBLE
         }
-
+        complete_button.setOnClickListener{
+            resultintent.putExtra(Result.Q_ARR,o_id)
+            resultintent.putExtra(Result.RES_ARR,answers)
+            startActivity(resultintent)
+        }
         select.min=1
         select.max=o_id.size
         select.progress=0
