@@ -25,11 +25,18 @@ class Result : AppCompatActivity() {
         val save=findViewById<Button>(R.id.save)
 
         save.setOnClickListener{
-            addrow()
+            var tmp=""
+            for(i in answers!!.indices){
+                if (answers[i]==0)
+                    tmp="Не соответствует"
+                else
+                    tmp="Соответствует"
+                addrow(questions!![i],tmp)
+            }
         }
 
     }
-    private fun addrow(){
+    private fun addrow(name:String,result:String){
         val tabcol1=findViewById<LinearLayout>(R.id.col1)
         val tabcol2=findViewById<LinearLayout>(R.id.col2)
         val inflater=getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -37,9 +44,11 @@ class Result : AppCompatActivity() {
         val textfield2:View= inflater.inflate(R.layout.textfield,null)
         tabcol1.addView(textfield1,tabcol1.childCount-1)
         tabcol2.addView(textfield2,tabcol2.childCount-1)
+        textfield1.id=View.generateViewId()
+        textfield2.id=View.generateViewId()
         val txt1= findViewById<TextView>(textfield1.id)
         val txt2= findViewById<TextView>(textfield2.id)
-        //txt1.text="req"
-        //txt2.text="qer"
+        txt1.text=name
+        txt2.text=result
     }
 }
