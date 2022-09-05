@@ -31,31 +31,28 @@ class Question_activity : AppCompatActivity() {
         val seek=findViewById<ConstraintLayout>(R.id.seek)
         val select=findViewById<SeekBar>(R.id.select_question)
         var curr_question=0
-        var answers= emptyArray<Int>()
-
+        var answers:Array<String>
         val o_id=intent.getStringArrayExtra(OBJ_ID)
         counter.text="1/"+o_id!!.size.toString()
-        if(o_id!=null) {
-            answers = Array<Int>(o_id.size) { -1 }
-            qtext.text = o_id[0]//фокус на первый вопрос в списке
-        }
+        answers = Array<String>(o_id.size) { "n" }
+        qtext.text = o_id[0]//фокус на первый вопрос в списке
         no_button.setOnClickListener{
             if (curr_question+1>o_id!!.size-1) {
-                answers[curr_question]=0
+                answers[curr_question]="n"
                 Toast.makeText(this, "Последний вопрос", Toast.LENGTH_LONG).show()
             }
             else{
-                answers[curr_question]=0
+                answers[curr_question]="n"
                 qtext.text= o_id!![curr_question+1]
                 curr_question +=1
                 counter.text=(curr_question+1).toString()+"/"+(o_id!!.size).toString()
             }
             when (answers[curr_question]){
-                0 -> {
+                "n" -> {
                     no_button.setBackgroundColor(resources.getColor(R.color.chosen))
                     yes_button.setBackgroundColor(resources.getColor(R.color.purple_500))
                 }
-                1 ->{
+                "y" ->{
                     yes_button.setBackgroundColor(resources.getColor(R.color.chosen))
                     no_button.setBackgroundColor(resources.getColor(R.color.purple_500))
                 }
@@ -67,21 +64,21 @@ class Question_activity : AppCompatActivity() {
         }
         yes_button.setOnClickListener{
             if (curr_question+1>o_id!!.size-1){
-                answers[curr_question]=1
+                answers[curr_question]="y"
                 Toast.makeText(this,"Последний вопрос",Toast.LENGTH_LONG).show()
             }
             else{
-                answers[curr_question]=1
+                answers[curr_question]="y"
                 qtext.text= o_id!![curr_question+1]
                 curr_question +=1
                 counter.text=(curr_question+1).toString()+"/"+(o_id!!.size).toString()
             }
             when (answers[curr_question]){
-                0 -> {
+                "n" -> {
                     no_button.setBackgroundColor(resources.getColor(R.color.chosen))
                     yes_button.setBackgroundColor(resources.getColor(R.color.purple_500))
                 }
-                1 ->{
+                "y" ->{
                     yes_button.setBackgroundColor(resources.getColor(R.color.chosen))
                     no_button.setBackgroundColor(resources.getColor(R.color.purple_500))
                 }
@@ -103,11 +100,11 @@ class Question_activity : AppCompatActivity() {
                 counter.text=(curr_question+1).toString()+"/"+(o_id!!.size).toString()
             }
             when (answers[curr_question]){
-                0 -> {
+                "n" -> {
                     no_button.setBackgroundColor(resources.getColor(R.color.chosen))
                     yes_button.setBackgroundColor(resources.getColor(R.color.purple_500))
                 }
-                1 ->{
+                "y" ->{
                     yes_button.setBackgroundColor(resources.getColor(R.color.chosen))
                     no_button.setBackgroundColor(resources.getColor(R.color.purple_500))
                 }
@@ -130,11 +127,11 @@ class Question_activity : AppCompatActivity() {
                 counter.text=(curr_question+1).toString()+"/"+(o_id!!.size).toString()
             }
             when (answers[curr_question]){
-                0 -> {
+                "n" -> {
                     no_button.setBackgroundColor(resources.getColor(R.color.chosen))
                     yes_button.setBackgroundColor(resources.getColor(R.color.purple_500))
                 }
-                1 ->{
+                "y" ->{
                     yes_button.setBackgroundColor(resources.getColor(R.color.chosen))
                     no_button.setBackgroundColor(resources.getColor(R.color.purple_500))
                 }
@@ -149,8 +146,9 @@ class Question_activity : AppCompatActivity() {
             seek.visibility = View.VISIBLE
         }
         complete_button.setOnClickListener{
-            resultintent.putExtra(Result.Q_ARR,o_id)
-            resultintent.putExtra(Result.RES_ARR,answers)
+            resultintent.putExtra("RES_ARR",answers)
+            resultintent.putExtra("Q_ARR",o_id)
+
             startActivity(resultintent)
         }
         select.min=1
@@ -167,11 +165,11 @@ class Question_activity : AppCompatActivity() {
                     qtext.text = o_id!![select.progress-1]
                     curr_question = select.progress-1
                     when (answers[curr_question]){
-                        0 -> {
+                        "n" -> {
                             no_button.setBackgroundColor(resources.getColor(R.color.chosen))
                             yes_button.setBackgroundColor(resources.getColor(R.color.purple_500))
                         }
-                        1 ->{
+                        "y" ->{
                             yes_button.setBackgroundColor(resources.getColor(R.color.chosen))
                             no_button.setBackgroundColor(resources.getColor(R.color.purple_500))
                         }

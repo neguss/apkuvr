@@ -19,22 +19,20 @@ class Result : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
-        val answers=intent.getIntArrayExtra(Q_ARR)
-        val questions=intent.getStringArrayExtra(RES_ARR)
+        val answers=intent.getStringArrayExtra("RES_ARR")
+        val questions=intent.getStringArrayExtra("Q_ARR")
         val tab=findViewById<LinearLayout>(R.id.tab)
         val save=findViewById<Button>(R.id.save)
-
         save.setOnClickListener{
             var tmp=""
-            for(i in answers!!.indices){
-                if (answers[i]==0)
+            for(i in questions!!.indices){
+                if (answers!![i] =="n")
                     tmp="Не соответствует"
                 else
                     tmp="Соответствует"
-                addrow(questions!![i],tmp)
+                addrow(questions[i],tmp)
             }
         }
-
     }
     private fun addrow(name:String,result:String){
         val tabcol1=findViewById<LinearLayout>(R.id.col1)

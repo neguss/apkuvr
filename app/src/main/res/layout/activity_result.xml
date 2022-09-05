@@ -94,6 +94,8 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
         android:orientation="horizontal"
+        android:scrollbars="vertical"
+        android:showDividers="middle|beginning|end|none"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5">
