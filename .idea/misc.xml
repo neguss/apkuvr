@@ -12,6 +12,7 @@
         <entry key="app/src/main/res/layout/multiline_spinner_item.xml" value="0.1859375" />
         <entry key="app/src/main/res/layout/question.xml" value="0.33" />
         <entry key="app/src/main/res/layout/textfield.xml" value="0.2328125" />
+        <entry key="app/src/main/res/layout/textfield_duo.xml" value="0.33" />
       </map>
     </option>
   </component>
