@@ -1,5 +1,6 @@
 package com.example.apk
 
+import android.annotation.SuppressLint
 import android.app.ActionBar
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
@@ -29,48 +30,41 @@ class Result : AppCompatActivity() {
         Toast.makeText(this, "123", Toast.LENGTH_SHORT).show()
         save.setOnClickListener{
             var tmp=""
+            var mark=false
             //addduorow()
             for(i in questions!!.indices){
-                if (answers!![i] =="n")
-                    tmp="Не соответствует"
-                else
-                    tmp="Соответствует"
-                addduorow(questions[i],tmp)
+                if (answers!![i] =="n") {
+                    tmp = "Не соответствует"
+                    mark=false
+                }
+                else {
+                    tmp = "Соответствует"
+                    mark=true
+                }
+                addduorow(questions[i],tmp,mark)
            }
         }
     }
-    private fun addrow(name:String,result:String){
-        val tab=findViewById<LinearLayout>(R.id.tab)
-        val inflater=getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val textfield:View= inflater.inflate(R.layout.text_row,null)
-        tab.addView(textfield,tab.childCount-1)
-        textfield.id=View.generateViewId()
-        val cont=findViewById<LinearLayout>(textfield.id)
-        val tmp1= cont.getChildAt(cont.childCount-2)
-        val tmp2= cont.getChildAt(cont.childCount-1)
-        tmp2.textAlignment=View.TEXT_ALIGNMENT_GRAVITY
-        tmp1.id=View.generateViewId()
-        tmp2.id=View.generateViewId()
-        val txt1=findViewById<TextView>(tmp1.id)
-        val txt2=findViewById<TextView>(tmp2.id)
-        txt1.text=name
-        txt2.text=result
-
-
-    }
-    private fun addduorow(name:String,result:String){
-        val tab=findViewById<LinearLayout>(R.id.tab)
-        val inflater=getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val textfield:View= inflater.inflate(R.layout.textfield_duo,null)
+    @SuppressLint("ResourceAsColor")
+    private fun addduorow(name:String, result:String, clr:Boolean){
+        var tab=findViewById<LinearLayout>(R.id.tab)
+        var inflater=getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        var textfield:View= inflater.inflate(R.layout.textfield_duo,null)
         tab.addView(textfield,tab.childCount-1)
         textfield.id=View.generateViewId()
         var tmp=findViewById<ConstraintLayout>(textfield.id)
+        if(clr)
+            textfield.setBackgroundColor(resources.getColor(R.color.good))
+        else
+            textfield.setBackgroundColor(resources.getColor(R.color.bad))
         var txt1=tmp.getChildAt(tmp.childCount-2)
         var txt2=tmp.getChildAt(tmp.childCount-1)
+        txt1.id=View.generateViewId()
+        txt2.id=View.generateViewId()
         var txt1t=findViewById<TextView>(txt1.id)
         var txt2t=findViewById<TextView>(txt2.id)
-        txt1t.text="1"
-        txt2t.text="2"
+        txt1t.text=name
+        txt2t.text=result
 
         Toast.makeText(this, "321", Toast.LENGTH_SHORT).show()
 

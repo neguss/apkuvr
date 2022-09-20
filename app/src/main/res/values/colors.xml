@@ -8,4 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="chosen">#91BD2A</color>
+    <color name="bad">#EA4343</color>
+    <color name="good">#97F66F</color>
 </resources>
