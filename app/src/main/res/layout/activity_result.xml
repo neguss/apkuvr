@@ -7,64 +7,65 @@
     tools:context=".Result">
 
     <TextView
-        android:id="@+id/Pers_text"
+        android:id="@+id/Obj_Label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        android:text="TextView"
+        android:text="Скважина"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/object"
-        android:layout_width="wrap_content"
+        android:id="@+id/Obj_Val"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
         android:text="TextView"
+        android:textAlignment="textEnd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/Pers_Label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        android:text="TextView"
+        android:text="Проверяющий"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Pers_text" />
+        app:layout_constraintTop_toBottomOf="@+id/Obj_Val" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/Pers_Val"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/object" />
+        app:layout_constraintTop_toBottomOf="@+id/Obj_Val" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/Date_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        android:text="TextView"
+        android:text="Дата"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/Pers_Label" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/Date_Val"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/Pers_Val" />
 
     <Button
         android:id="@+id/save"
@@ -96,7 +97,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/Date_label"
         app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout

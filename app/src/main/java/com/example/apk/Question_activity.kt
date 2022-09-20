@@ -16,6 +16,7 @@ class Question_activity : AppCompatActivity() {
 
     companion object{
         const val OBJ_ID= ""
+        const val CRED=""
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +34,7 @@ class Question_activity : AppCompatActivity() {
         var curr_question=0
         var answers:Array<String>
         val o_id=intent.getStringArrayExtra(OBJ_ID)
+        val cred=intent.getStringArrayExtra("CRED")
         counter.text="1/"+o_id!!.size.toString()
         answers = Array<String>(o_id.size) { "n" }
         qtext.text = o_id[0]//фокус на первый вопрос в списке
@@ -148,7 +150,7 @@ class Question_activity : AppCompatActivity() {
         complete_button.setOnClickListener{
             resultintent.putExtra("RES_ARR",answers)
             resultintent.putExtra("Q_ARR",o_id)
-
+            resultintent.putExtra("CRED",cred)
             startActivity(resultintent)
         }
         select.min=1

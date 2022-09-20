@@ -24,25 +24,32 @@ class Result : AppCompatActivity() {
         setContentView(R.layout.activity_result)
         val answers=intent.getStringArrayExtra("RES_ARR")
         val questions=intent.getStringArrayExtra("Q_ARR")
-        val pers=findViewById<TextView>(R.id.pers_text)
+        val cred=intent.getStringArrayExtra("CRED")
         val tab=findViewById<LinearLayout>(R.id.tab)
         val save=findViewById<Button>(R.id.save)
+        val objtext=findViewById<TextView>(R.id.Obj_Val)
+        val perstext=findViewById<TextView>(R.id.Pers_Val)
+        val datetext=findViewById<TextView>(R.id.Date_Val)
+        val cancelbutton=findViewById<Button>(R.id.cancel)
+        objtext.text=cred!![0]
+        perstext.text=cred!![1]
+        datetext.text=cred!![2]
         Toast.makeText(this, "123", Toast.LENGTH_SHORT).show()
-        save.setOnClickListener{
-            var tmp=""
-            var mark=false
-            //addduorow()
-            for(i in questions!!.indices){
-                if (answers!![i] =="n") {
-                    tmp = "Не соответствует"
-                    mark=false
-                }
-                else {
-                    tmp = "Соответствует"
-                    mark=true
-                }
-                addduorow(questions[i],tmp,mark)
-           }
+        var tmp=""
+        var mark=false
+        for(i in questions!!.indices){
+            if (answers!![i] =="n") {
+                tmp = "Не соответствует"
+                mark=false
+            }
+            else {
+                tmp = "Соответствует"
+                mark=true
+            }
+            addduorow(questions[i],tmp,mark)
+        }
+        cancelbutton.setOnClickListener{
+            finish()
         }
     }
     @SuppressLint("ResourceAsColor")
@@ -50,7 +57,7 @@ class Result : AppCompatActivity() {
         var tab=findViewById<LinearLayout>(R.id.tab)
         var inflater=getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         var textfield:View= inflater.inflate(R.layout.textfield_duo,null)
-        tab.addView(textfield,tab.childCount-1)
+        tab.addView(textfield,tab.childCount)
         textfield.id=View.generateViewId()
         var tmp=findViewById<ConstraintLayout>(textfield.id)
         if(clr)

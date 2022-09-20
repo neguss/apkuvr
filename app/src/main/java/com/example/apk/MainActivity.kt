@@ -979,6 +979,10 @@ class MainActivity : AppCompatActivity() {
         }
         start_button.setOnClickListener{
             var req=db.getRequirement(obj_id)
+            var cred= emptyArray<String>()
+            cred+=sobj.selectedItem.toString()
+            cred+=spers.selectedItem.toString()
+            cred+=dtext.text.toString()
             if (req!=null) {
                 questions_arr= emptyArray<String>()
                 while (req.moveToNext()) {
@@ -986,6 +990,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             qactivity.putExtra(Question_activity.OBJ_ID,questions_arr)
+            qactivity.putExtra("CRED",cred)
             startActivity(qactivity)
         }
 
