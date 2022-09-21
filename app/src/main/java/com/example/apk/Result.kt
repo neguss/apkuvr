@@ -31,24 +31,28 @@ class Result : AppCompatActivity() {
         objtext.text=cred!![0]
         perstext.text= cred[1]
         datetext.text=cred[2]
-        var tmp =""
+        var tmp=Array<String>(answers!!.size) {""}
         var mark=false
         for(i in questions!!.indices){
             if (answers!![i] =="n") {
-                tmp = "Не соответствует"
+                tmp[i] = "Не соответствует"
                 mark=false
             }
             else {
-                tmp = "Соответствует"
+                tmp[i] = "Соответствует"
                 mark=true
             }
-            addduorow(questions[i],tmp,mark)
+            addduorow(questions[i],tmp[i],mark)
         }
+
         donebutton.setOnClickListener{
             if(ContextCompat.checkSelfPermission(applicationContext,android.Manifest.permission.WRITE_EXTERNAL_STORAGE)==PackageManager.PERMISSION_GRANTED) {
-                val out = File("/storage/emulated/0/Download/11111.csv")
+                val out = File("/storage/emulated/0/Download/"+"Протокол_от_"+cred[2].replace('/','.')+" "+perstext.text+".csv")
                 if (!out.exists())
                     out.createNewFile()
+                for (i in questions!!.indices) {
+                    out.writeText(questions[i]+"\t"+tmp[i])
+                }
             }
             else
                 ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),12)
