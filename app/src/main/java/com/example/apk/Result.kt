@@ -50,8 +50,12 @@ class Result : AppCompatActivity() {
                 val out = File("/storage/emulated/0/Download/"+"Протокол_от_"+cred[2].replace('/','.')+" "+perstext.text+".csv")
                 if (!out.exists())
                     out.createNewFile()
+                else {
+                    out.delete()
+                    out.createNewFile()
+                }
                 for (i in questions!!.indices) {
-                    out.writeText(questions[i]+"\t"+tmp[i])
+                    out.appendText(questions[i]+"\t"+tmp[i]+"\n")
                 }
             }
             else
