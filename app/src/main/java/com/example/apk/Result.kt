@@ -54,6 +54,12 @@ class Result : AppCompatActivity() {
                     out.delete()
                     out.createNewFile()
                 }
+                out.appendText("Объект\t\t"+objtext.text+"\n")
+                out.appendText("Проверяющий\t\t"+perstext.text+"\n")
+                out.appendText("Дата проверки\t\t"+datetext.text+"\n")
+
+
+
                 for (i in questions!!.indices) {
                     out.appendText(questions[i]+"\t"+tmp[i]+"\n")
                 }

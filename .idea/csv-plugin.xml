@@ -10,6 +10,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="$USER_HOME$/.cache/Google/AndroidStudio2021.2/device-explorer/emulator-5554/storage/emulated/0/Download/Протокол_от_22.09.2022 Логач Е.С..csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>
